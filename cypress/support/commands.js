@@ -29,5 +29,13 @@ Cypress.Commands.add("selectProduct",productName => {
         }
     })
 })
+
+Cypress.Commands.add("contactUsForm",(firstName,email,comment) => {
+    cy.get('#ContactUsFrm_first_name').type(firstName)
+    cy.get('#ContactUsFrm_email').type(email)
+    cy.get('#ContactUsFrm_enquiry').type(comment)
+    cy.get('button[type=submit]').eq(0).click()
+    cy.get('body').contains('Your enquiry has been successfully sent to the store owner!')
+})
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
